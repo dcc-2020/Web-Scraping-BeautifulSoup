@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Mission to Mars</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="text-center">
+        <h1>Mission to Mars</h1>
+        <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape Mars Data</a></p>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+          <h3>Latest Mars News</h3>
+          <h5>{{ mars.news_title }}</h5>
+          <p>{{ mars.news_paragraph }}</p>
+      </div>
+    </div>
+
+    <div class="container px-4">
+        <div class="row gx-4">
+          <div class="col">
+            <h3>Featured Mars Image</h3>
+            <img src="{{ mars.featured_image_url }}" alt="Mars Featured Image">
+          </div>
+          <div class="col">
+            <h3>Mars Facts</h3>
+            {{ mars.mars_facts | safe}}
+          </div>
+        </div>
+    </div>
+
+    <div class="container px-4">
+        <div class="col-lg-12">
+        <h3>Mars Hemispheres</h3>
+            <div class="row">
+                {% for image in mars.hemisphere_image_urls %}
+                <div class="col-lg-3">
+                    <div class="card" style="padding: 10px;">
+                        <div class="boxmargin">
+                            <img width="100%" src=" {{ image.img_url }} " alt=" {{ image.title }} ">
+                            <h3> {{ image.title }} </h3>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+  </div>
+</body>
+
+</html>
